@@ -18,6 +18,6 @@ namespace Domain.Entities
         public Role Role { get; set; }
         public string? ProfileImage { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

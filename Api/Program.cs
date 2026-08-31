@@ -1,4 +1,11 @@
 
+using Application.Interface.Repository;
+using Application.Interface.Services;
+using Application.Services;
+using Infrastructure.Data;
+using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace Api
 {
     public class Program
@@ -8,10 +15,19 @@ namespace Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            // Register DbContext
+            builder.Services.AddDbContext<FarmNaijaDbcontext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // Register Repositories
+            builder.Services.AddScoped<IUserRepositories, UserRepositories>();
+
+            // Register Services
+            builder.Services.AddScoped<IUserServices, UserServices>();
 
             var app = builder.Build();
 
@@ -28,7 +44,6 @@ namespace Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
