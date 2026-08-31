@@ -5,6 +5,13 @@ using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+using Application.Interface.Repository;
+using Application.Interface.Services;
+using Application.Services;
+using Infrastructure.Data;
+using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace Api
 {
     public class Program
@@ -31,6 +38,16 @@ namespace Api
 
             // OpenAPI
             builder.Services.AddOpenApi();
+
+            // Register DbContext
+            builder.Services.AddDbContext<FarmNaijaDbcontext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // Register Repositories
+            builder.Services.AddScoped<IUserRepositories, UserRepositories>();
+
+            // Register Services
+            builder.Services.AddScoped<IUserServices, UserServices>();
 
             var app = builder.Build();
 
