@@ -1,3 +1,9 @@
+using Application.Interface.Repository;
+using Application.Interface.Services;
+using Application.Services;
+using Infrastructure.Data;
+using Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
@@ -8,9 +14,22 @@ namespace Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+            // Register FarmNaija DbContext
+            builder.Services.AddDbContext<FarmNaijaDbcontext>(options =>
+                options.UseMySql(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    ServerVersion.AutoDetect(
+                        builder.Configuration.GetConnectionString("DefaultConnection")
+                    )
+                ));
+
+            // Register Order Services and Repositories
+            builder.Services.AddScoped<IOrderServices, OrderService>();
+            builder.Services.AddScoped<IOrderRepositories, OrderRepositories>();
+
+            // OpenAPI
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
@@ -19,16 +38,19 @@ namespace Api
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+
                 app.UseSwaggerUI(options =>
                 {
-                    options.SwaggerEndpoint("/openapi/v1.json", "v1");
+                    options.SwaggerEndpoint(
+                        "/openapi/v1.json",
+                        "v1"
+                    );
                 });
             }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
