@@ -87,6 +87,8 @@ namespace Api
 
             builder.Services.AddScoped<IOrderRepositories, OrderRepositories>();
             builder.Services.AddScoped<IOrderServices, OrderService>();
+            builder.Services.AddScoped<IUserRepositories, UserRepositories>();
+            builder.Services.AddScoped<IUserServices, UserServices>();
 
             builder.Services.AddOpenApi();
             var app = builder.Build();
