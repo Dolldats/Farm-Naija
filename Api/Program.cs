@@ -29,6 +29,8 @@ namespace Api
             // Register Order Repositories and Services
             builder.Services.AddScoped<IOrderRepositories, OrderRepositories>();
             builder.Services.AddScoped<IOrderServices, OrderService>();
+            builder.Services.AddScoped<IUserRepositories, UserRepositories>();
+            builder.Services.AddScoped<IUserServices, UserServices>();
 
             // Register Delivery Repositories and Services
             builder.Services.AddScoped<IDeliveryRepositories, DeliveryRepositories>();
