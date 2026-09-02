@@ -53,6 +53,11 @@ namespace Infrastructure.Repositories
                 .FirstOrDefaultAsync(f => f.UserId == userId);
         }
 
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
         public async Task UpdateFarmerAsync(Farmer farmer)
         {
             _context.Farmers.Update(farmer);
