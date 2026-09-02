@@ -15,5 +15,7 @@ namespace Application.Interface.Repository
         Task<Farmer> AddFarmerAsync(Farmer farmer);
         Task UpdateFarmerAsync(Farmer farmer);
         Task DeleteFarmerAsync(Farmer farmer);
+        Task SaveChangesAsync();
+
     }
 }

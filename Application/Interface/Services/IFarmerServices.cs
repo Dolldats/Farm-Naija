@@ -10,11 +10,11 @@ namespace Application.Interface.Services
 {
     public interface IFarmerServices
     {
-        Task<FarmerResponseDto> CreateFarmerAsync(int userId, CreateFarmerDto dto);
-        Task<FarmerResponseDto> GetFarmerByIdAsync(int id);
-        Task<FarmerResponseDto> GetFarmerByUserIdAsyn(int userId);
+        Task<FarmerResponseDto?> CreateFarmerAsync(int userId, CreateFarmerDto dto);
+        Task<FarmerResponseDto?> GetFarmerByIdAsync(int id);
+        Task<FarmerResponseDto?> GetFarmerByUserIdAsync(int userId);
         Task<IEnumerable<FarmerResponseDto>> GetAllFarmerAsync();
-        Task<FarmerResponseDto> UpdateFarmerAsync(int id, int userId, UpdateFarmerDto dto);
+        Task<FarmerResponseDto?> UpdateFarmerAsync(int id, int userId, UpdateFarmerDto dto);
         Task<bool> DeleteFarmerAsync(int id, int userId);
     }
 }

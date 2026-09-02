@@ -52,7 +52,7 @@ namespace Application.Services
 
         public async Task<bool> DeletePatientAsync(int id)
         {
-            var user = await _userRepositories.GetAllUsersByIdAsync(id);
+            var user = await _userRepositories.GetUserByIdAsync(id);
 
             if (user == null)
             {
@@ -73,7 +73,7 @@ namespace Application.Services
 
         public async Task<UserResponseDto?> GetUserByIdAsync(int id)
         {
-            var user = await _userRepositories.GetAllUsersByIdAsync(id);
+            var user = await _userRepositories.GetUserByIdAsync(id);
 
             if (user == null)
             {
@@ -85,7 +85,7 @@ namespace Application.Services
 
         public async Task<UserResponseDto?> UpdatePatientAsync(int id, UpdateUserDto dto)
         {
-            var user = await _userRepositories.GetAllUsersByIdAsync(id);
+            var user = await _userRepositories.GetUserByIdAsync(id);
 
             if (user == null)
             {
