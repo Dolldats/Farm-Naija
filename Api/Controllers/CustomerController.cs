@@ -52,7 +52,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
             var customer = await _customerService.GetCustomerByIdAsync(id);
