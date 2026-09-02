@@ -11,7 +11,7 @@ namespace Application.Interface.Repository
     public interface IUserRepositories 
     {
         Task<IEnumerable<User>> GetAllUsersAsync();
-        Task<User?> GetAllUsersByIdAsync(int id);
+        Task<User?> GetUserByIdAsync(int id);
         Task<User?> GetUserByEmailAsync(string email);
         Task AddUserAsync(User user);
         void Update(User user);
