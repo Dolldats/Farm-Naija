@@ -1,6 +1,7 @@
 using Application.Interface.Repository;
 using Application.Interface.Services;
 using Application.Services;
+using FarmNigeria.Services;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,10 @@ namespace Api
             // Register User Repositories and Services
             builder.Services.AddScoped<IUserRepositories, UserRepositories>();
             builder.Services.AddScoped<IUserServices, UserServices>();
+            builder.Services.AddScoped<IFarmerRepositories, FarmerRepositories>();
+            builder.Services.AddScoped<IFarmerServices, FarmerService>();
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<ICustomerService, CustomerService>();
 
             // Register Delivery Repositories and Services
             builder.Services.AddScoped<IDeliveryRepositories, DeliveryRepositories>();
