@@ -30,6 +30,8 @@ namespace Api
             // Register Order Repositories and Services
             builder.Services.AddScoped<IOrderRepositories, OrderRepositories>();
             builder.Services.AddScoped<IOrderServices, OrderService>();
+
+            // Register User Repositories and Services
             builder.Services.AddScoped<IUserRepositories, UserRepositories>();
             builder.Services.AddScoped<IUserServices, UserServices>();
             builder.Services.AddScoped<IFarmerRepositories, FarmerRepositories>();
@@ -40,6 +42,10 @@ namespace Api
             // Register Delivery Repositories and Services
             builder.Services.AddScoped<IDeliveryRepositories, DeliveryRepositories>();
             builder.Services.AddScoped<IDeliveryServices, DeliveryService>();
+
+            // Register Notification Repositories and Services
+            builder.Services.AddScoped<INotificationRepositories, NotificationRepositories>();
+            builder.Services.AddScoped<INotificationServices, NotificationServices>();
 
             // OpenAPI
             builder.Services.AddOpenApi();
